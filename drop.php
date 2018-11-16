@@ -15,19 +15,13 @@ include_once('connection.php');
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$username = $_POST['username'];		// anything
-	$password = $_POST['password'];		// anything' OR '1' = '1'; DROP TABLE dropped. then escaping
+	$password = $_POST['password'];		// anything' OR '1' = '1'; DROP TABLE dropped; --
 
 	$query = "SELECT * FROM users WHERE
 			username = '$username'
 			AND password = '$password'";
 
-	$result = mysqli_mulit_query($conn, $query);
-
-	if($result->num_rows > 0) {
-		echo "Success";
-	} else {
-		echo "Fail";
-	}
+	$result = mysqli_multi_query($conn, $query);
 }
 
 ?>
